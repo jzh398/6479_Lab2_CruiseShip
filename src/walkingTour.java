@@ -28,9 +28,9 @@ public class walkingTour extends Activities{
     public void printDetails() {
         System.out.println("Trail Name: " + getTrail());
         System.out.println("Description: " + getDescription());
-        System.out.println("Distance: " + getDistance());
         System.out.println("Cost: " + getCost());
         System.out.println("Capacity: " + getCapacity());
-        System.out.println("Destination: " + getDestination());
+        System.out.println("Distance: " + getDistance());
+        System.out.println("---------------------------------------------");
     }
 }

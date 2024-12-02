@@ -1,16 +1,22 @@
 public class Cabin extends CruiseShip{
     private String cabinName;
     private Passenger passenger;
-    private String type;
     private boolean isOccupied;
     private boolean isPremium;
 
     //constructor
-    public Cabin(String name, int capacity, String cabinName, Passenger occupant, String type) {
+    public Cabin(String name, int capacity, String cabinName, Passenger occupant, boolean isPremium) {
+        super(name, capacity);
+        this.cabinName = cabinName;
+        this.passenger = occupant;
+        this.isPremium = isPremium;
+    }
+
+    public Cabin(String name, int capacity, String cabinName, boolean isPremium) {
         super(name, capacity);
         this.cabinName = cabinName;
         this.passenger = null;
-        this.type = type;
+        this.isPremium = isPremium;
     }
 
     //getters & setters
@@ -38,11 +44,12 @@ public class Cabin extends CruiseShip{
     //methods (**)
 
     public boolean addPassenger(Passenger passenger){
-        if(isOccupied = true){
+
+        if(isOccupied){
             System.out.println("Cabin is already occupied, please book another cabin!");
             return false;
         }
-        if(type.equals("premium") && !(passenger instanceof PremiumPassenger)) {
+        if(isPremium && !(passenger instanceof PremiumPassenger)) {
             System.out.println("Only premium passengers can have access to this cabin! Please choose a standard cabin.");
             return false;
         }
@@ -69,13 +76,12 @@ public class Cabin extends CruiseShip{
 
     public void printDetails(){
         System.out.println("Cabin " + cabinName + ":");
-        if(isOccupied){
+        if (isOccupied) {
             System.out.println("Passenger Name: " + passenger.getName());
-            System.out.println("Passenger Number:" + passenger.getPassangerNum());
-        }else{
+            System.out.println("Passenger Number:" + passenger.getPassengerNum());
+        } else {
             System.out.println("Unoccupied");
         }
-
+        System.out.println("---------------------------------------------");
     }
-
 }
